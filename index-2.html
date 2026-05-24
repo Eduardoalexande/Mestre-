@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Arruma Essa Casa, Criatura! — Mestre Zeca</title>
+<style>
+  /* Fontes de fallback imediatas enquanto Google Fonts carrega */
+  body { font-family: 'Nunito', 'Arial Rounded MT Bold', Arial, sans-serif; }
+  h1, h2, h3, .timer-bloco .num, .preco-hero .por, .preco-box .por, .badge-off, .cover-title, .btn-cta, .float-cta a {
+    font-family: 'Bangers', 'Impact', 'Arial Black', sans-serif;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;900&family=Fredoka+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;900&family=Fredoka+One&display=swap" rel="stylesheet"></noscript>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde: #2ECC71;
+    --verde-escuro: #1a8f4e;
+    --amarelo: #F9C923;
+    --laranja: #FF6B35;
+    --creme: #FFF8EE;
+    --marrom: #3D1F00;
+    --marrom-claro: #7A4419;
+    --cinza: #f0ebe3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--creme);
+    color: var(--marrom);
+    overflow-x: hidden;
+  }
+
+  /* ── TOPO / URGÊNCIA ── */
+  .banner-topo {
+    background: var(--laranja);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: 900;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+  .banner-topo span { font-size: 1.1rem; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #fff6e0 0%, #ffe9b8 60%, #ffd580 100%);
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, #f9c92355 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, #2ecc7133 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--laranja);
+    color: white;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .hero h1 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: 0.95;
+    color: var(--marrom);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero h1 .destaque {
+    color: var(--laranja);
+    -webkit-text-stroke: 2px var(--marrom);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--marrom-claro);
+    font-weight: 700;
+    margin: 18px auto 30px;
+    max-width: 560px;
+    line-height: 1.5;
+  }
+
+  /* Ebook mockup */
+  .ebook-mockup {
+    position: relative;
+    display: inline-block;
+    margin: 20px auto 30px;
+  }
+  .ebook-cover {
+    width: 200px;
+    height: 270px;
+    background: linear-gradient(135deg, var(--verde-escuro) 0%, #145c35 100%);
+    border-radius: 8px 16px 16px 8px;
+    box-shadow: -6px 6px 0 #0a3d20, 12px 16px 40px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ebook-cover::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: linear-gradient(to right, #0a3d20, #1a8f4e);
+    border-radius: 8px 0 0 8px;
+  }
+  .ebook-cover::after {
+    content: '🏠';
+    font-size: 3.5rem;
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    opacity: 0.25;
+  }
+  .ebook-cover .cover-tag {
+    background: var(--amarelo);
+    color: var(--marrom);
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+  }
+  .ebook-cover .cover-title {
+    font-family: 'Bangers', cursive;
+    font-size: 1.6rem;
+    color: white;
+    line-height: 1.1;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .ebook-cover .cover-sub {
+    font-size: 0.65rem;
+    color: #a8e6c0;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .ebook-cover .cover-autor {
+    margin-top: 16px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: var(--amarelo);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .badge-off {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    background: var(--laranja);
+    color: white;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: spin-badge 6s linear infinite;
+    text-align: center;
+    line-height: 1.1;
+  }
+  @keyframes spin-badge {
+    0%, 100% { transform: rotate(-8deg) scale(1); }
+    50% { transform: rotate(8deg) scale(1.08); }
+  }
+
+  /* Preço hero */
+  .preco-hero {
+    margin: 10px auto 0;
+  }
+  .preco-hero .de {
+    font-size: 1rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 700;
+  }
+  .preco-hero .por {
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem;
+    color: var(--verde-escuro);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .preco-hero .parcelas {
+    font-size: 0.9rem;
+    color: var(--marrom-claro);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--verde-escuro) 100%);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    padding: 18px 48px;
+    border-radius: 60px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 0 var(--verde-escuro), 0 10px 30px rgba(46,204,113,0.4);
+    transition: all 0.15s ease;
+    margin-top: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-cta::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-20deg);
+    transition: left 0.4s ease;
+  }
+  .btn-cta:hover::after { left: 150%; }
+  .btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 var(--verde-escuro), 0 14px 40px rgba(46,204,113,0.5);
+  }
+  .btn-cta:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 var(--verde-escuro), 0 6px 20px rgba(46,204,113,0.3);
+  }
+
+  .seguranca {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: #888;
+    font-weight: 700;
+  }
+  .seguranca span { margin: 0 6px; }
+
+  /* ── TIMER ── */
+  .timer-section {
+    background: var(--marrom);
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  .timer-section p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--amarelo);
+    margin-bottom: 10px;
+  }
+  .timer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .timer-bloco {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(249,201,35,0.4);
+    border-radius: 10px;
+    padding: 10px 18px;
+    min-width: 72px;
+  }
+  .timer-bloco .num {
+    font-family: 'Bangers', cursive;
+    font-size: 2.4rem;
+    color: var(--amarelo);
+    letter-spacing: 2px;
+    line-height: 1;
+    display: block;
+  }
+  .timer-bloco .label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ccc;
+    font-weight: 700;
+  }
+
+  /* ── PROBLEMA ── */
+  .problema {
+    background: white;
+    padding: 70px 20px;
+    text-align: center;
+  }
+  .section-tag {
+    display: inline-block;
+    background: var(--cinza);
+    color: var(--marrom-claro);
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+  .problema h2 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .problema p {
+    font-size: 1.1rem;
+    color: var(--marrom-claro);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 600;
+  }
+  .cards-problema {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 44px;
+  }
+  .card-p {
+    background: var(--creme);
+    border: 2px solid #eee;
+    border-radius: 16px;
+    padding: 28px 24px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card-p:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  }
+  .card-p .emoji { font-size: 2.6rem; margin-bottom: 12px; display: block; }
+  .card-p p { font-size: 0.95rem; font-weight: 700; color: var(--marrom); line-height: 1.4; }
+
+  /* ── SOLUÇÃO / O QUE VOCÊ VAI APRENDER ── */
+  .solucao {
+    background: linear-gradient(160deg, #1a5c35 0%, #0e3d20 100%);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .solucao::before {
+    content: '🏠';
+    font-size: 18rem;
+    position: absolute;
+    right: -40px; top: -40px;
+    opacity: 0.05;
+    line-height: 1;
+  }
+  .solucao .section-tag { background: rgba(255,255,255,0.15); color: var(--amarelo); }
+  .solucao h2 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: white;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .solucao > p {
+    color: #a8e6c0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    max-width: 560px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+  }
+  .items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .item-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 24px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+  .item-card:hover { background: rgba(255,255,255,0.13); }
+  .item-card .ic {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .item-card h4 {
+    color: var(--amarelo);
+    font-size: 0.95rem;
+    font-weight: 900;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .item-card p { color: #c5e8d5; font-size: 0.9rem; font-weight: 600; line-height: 1.5; }
+
+  /* ── AUTOR ── */
+  .autor {
+    background: var(--cinza);
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .autor-card {
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 44px 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .autor-card::before {
+    content: '"';
+    font-family: 'Bangers', cursive;
+    font-size: 8rem;
+    color: var(--amarelo);
+    position: absolute;
+    top: -20px; left: 30px;
+    line-height: 1;
+    opacity: 0.4;
+  }
+  .avatar {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--laranja), var(--amarelo));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 0 auto 20px;
+    border: 4px solid var(--marrom);
+    box-shadow: 4px 4px 0 var(--marrom);
+  }
+  .autor-card h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .autor-card .cargo {
+    font-size: 0.8rem;
+    color: var(--laranja);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .autor-card p {
+    font-size: 1rem;
+    color: var(--marrom-claro);
+    line-height: 1.8;
+    font-weight: 600;
+  }
+
+  /* ── DEPOIMENTOS ── */
+  .depoimentos {
+    background: white;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .depoimentos h2 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 6vw, 3rem);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .depoimentos > p {
+    color: var(--marrom-claro);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 44px;
+  }
+  .dep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .dep-card {
+    background: var(--creme);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border-left: 5px solid var(--verde);
+  }
+  .dep-estrelas { color: var(--amarelo); font-size: 1.1rem; margin-bottom: 12px; }
+  .dep-card p { font-size: 0.95rem; color: var(--marrom); font-weight: 600; line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+  .dep-autor { display: flex; align-items: center; gap: 10px; }
+  .dep-avatar {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--verde), var(--amarelo));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .dep-nome { font-weight: 900; font-size: 0.85rem; color: var(--marrom); }
+  .dep-local { font-size: 0.75rem; color: #999; font-weight: 700; }
+
+  /* ── PREÇO / CTA FINAL ── */
+  .cta-final {
+    background: linear-gradient(160deg, #fff6e0 0%, #ffe9b8 100%);
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .cta-final h2 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    line-height: 1.1;
+  }
+  .cta-final > p {
+    color: var(--marrom-claro);
+    font-size: 1.05rem;
+    font-weight: 700;
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+  .preco-box {
+    display: inline-block;
+    background: white;
+    border-radius: 24px;
+    padding: 36px 48px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    margin-bottom: 28px;
+    border: 3px solid var(--amarelo);
+  }
+  .preco-box .de {
+    font-size: 1rem;
+    color: #aaa;
+    text-decoration: line-through;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .preco-box .por {
+    font-family: 'Bangers', cursive;
+    font-size: 4.5rem;
+    color: var(--verde-escuro);
+    letter-spacing: 3px;
+    line-height: 1;
+    display: block;
+  }
+  .preco-box .parcelas {
+    font-size: 0.95rem;
+    color: #888;
+    font-weight: 700;
+    margin-top: 6px;
+  }
+  .preco-box .economia {
+    margin-top: 12px;
+    background: var(--verde);
+    color: white;
+    border-radius: 50px;
+    padding: 5px 16px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    display: inline-block;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── GARANTIA ── */
+  .garantia {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 540px;
+    margin: 36px auto 0;
+    background: white;
+    border-radius: 16px;
+    padding: 22px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    text-align: left;
+  }
+  .garantia .g-icon { font-size: 3rem; flex-shrink: 0; }
+  .garantia h4 { font-weight: 900; font-size: 1rem; margin-bottom: 6px; }
+  .garantia p { font-size: 0.88rem; color: var(--marrom-claro); font-weight: 600; line-height: 1.5; }
+
+  /* ── FAQ ── */
+  .faq {
+    background: var(--cinza);
+    padding: 70px 20px;
+  }
+  .faq h2 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .faq-pergunta {
+    padding: 20px 24px;
+    font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+  }
+  .faq-pergunta:hover { background: var(--creme); }
+  .faq-seta {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    color: var(--verde-escuro);
+  }
+  .faq-resposta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s ease;
+    padding: 0 24px;
+    font-size: 0.95rem;
+    color: var(--marrom-claro);
+    font-weight: 600;
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-resposta {
+    max-height: 300px;
+    padding: 0 24px 20px;
+  }
+  .faq-item.open .faq-seta { transform: rotate(180deg); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--marrom);
+    color: #aaa;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  footer a { color: var(--amarelo); text-decoration: none; }
+
+  /* FLOATING CTA */
+  .float-cta {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    display: none;
+    animation: slideUp 0.4s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateX(-50%) translateY(80px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+  }
+  .float-cta a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--verde-escuro);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.15rem;
+    padding: 15px 36px;
+    border-radius: 60px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 600px) {
+    .preco-box { padding: 28px 28px; }
+    .preco-box .por { font-size: 3.5rem; }
+    .garantia { flex-direction: column; text-align: center; }
+    .autor-card { padding: 36px 24px; }
+    .btn-cta { padding: 16px 36px; font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BANNER TOPO -->
+<div class="banner-topo">
+  ⚡ OFERTA LIMITADA — <span>71% OFF</span> só por tempo limitado! Não perde, criatura!
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">🏠 Ebook Digital • Acesso Imediato</div>
+
+  <h1>
+    Arruma Essa<br>
+    <span class="destaque">Casa, Criatura!</span>
+  </h1>
+
+  <p class="hero-sub">Dicas rápidas do Mestre Zeca pra dar um jeito no teu cantinho <em>agora mesmo</em> — sem gastar quase nada e sem complicação!</p>
+
+  <div class="ebook-mockup">
+    <div class="ebook-cover">
+      <div class="cover-tag">ebook curto</div>
+      <div class="cover-title">Arruma<br>Essa Casa,<br>Criatura!</div>
+      <div class="cover-sub">Dicas rápidas pra transformar seu cantinho</div>
+      <div class="cover-autor">Mestre Zeca</div>
+    </div>
+    <div class="badge-off">71%<br>OFF</div>
+  </div>
+
+  <div class="preco-hero">
+    <div class="de">De R$ 97,00</div>
+    <div class="por">R$ 27,90</div>
+    <div class="parcelas">ou em 12x de R$ 2,99</div>
+  </div>
+
+  <a href="https://pay.herospark.com/segunda-oferta-523814" class="btn-cta">🛒 Quero o Ebook Agora!</a>
+
+  <div class="seguranca">
+    🔒 Pagamento 100% seguro <span>•</span> 📱 Acesso imediato <span>•</span> 💻 100% digital
+  </div>
+</section>
+
+<!-- TIMER -->
+<div class="timer-section">
+  <p>⏳ Oferta especial expira em:</p>
+  <div class="timer">
+    <div class="timer-bloco"><span class="num" id="horas">02</span><span class="label">horas</span></div>
+    <div class="timer-bloco"><span class="num" id="minutos">47</span><span class="label">min</span></div>
+    <div class="timer-bloco"><span class="num" id="segundos">00</span><span class="label">seg</span></div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="problema">
+  <div class="section-tag">🤔 Você se identifica?</div>
+  <h2>Sua Casa Tá Um Caos<br>e Você Não Sabe Por Onde Começar?</h2>
+  <p>A bagunça bate, a vontade de organizar some, e o dinheiro pra reformar não aparece. Relaxa — o Mestre Zeca entende a sua dor.</p>
+
+  <div class="cards-problema">
+    <div class="card-p"><span class="emoji">😩</span><p>Acordar e já se estressar com a desordem em casa</p></div>
+    <div class="card-p"><span class="emoji">💸</span><p>Achar que organizar casa precisa de muito dinheiro</p></div>
+    <div class="card-p"><span class="emoji">🤷</span><p>Não saber por onde começar e deixar pra amanhã (de novo)</p></div>
+    <div class="card-p"><span class="emoji">📦</span><p>Ter tralha acumulada por anos sem saber o que fazer</p></div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section class="solucao">
+  <div class="section-tag">✅ O que você vai aprender</div>
+  <h2>O Que Tem Dentro<br>Desse Ebook, Criatura?</h2>
+  <p>Dicas diretas, práticas e sem enrolação pra você transformar seu espaço do jeito que é — com o que você tem.</p>
+
+  <div class="items-grid">
+    <div class="item-card">
+      <span class="ic">🗂️</span>
+      <div>
+        <h4>Organize Sem Gastar Quase Nada</h4>
+        <p>Técnicas simples pra reorganizar qualquer ambiente usando o que já tem em casa.</p>
+      </div>
+    </div>
+    <div class="item-card">
+      <span class="ic">😂</span>
+      <div>
+        <h4>Humor + Resultado Real</h4>
+        <p>Aprenda de um jeito leve e divertido — sem aquele papo chato de organização perfeita.</p>
+      </div>
+    </div>
+    <div class="item-card">
+      <span class="ic">⚡</span>
+      <div>
+        <h4>Comece Agora, Veja Resultado Hoje</h4>
+        <p>Passos pequenos que dão resultado rápido e te motivam a continuar arrumando.</p>
+      </div>
+    </div>
+    <div class="item-card">
+      <span class="ic">🏠</span>
+      <div>
+        <h4>Bagunça Vira Conforto</h4>
+        <p>Descubra como transformar qualquer cantinho, seja apartamento, quarto ou kitnet.</p>
+      </div>
+    </div>
+    <div class="item-card">
+      <span class="ic">🧹</span>
+      <div>
+        <h4>Manutenção Sem Sofrimento</h4>
+        <p>Como manter a casa organizada no dia a dia sem precisar fazer faxina gigante toda semana.</p>
+      </div>
+    </div>
+    <div class="item-card">
+      <span class="ic">🎯</span>
+      <div>
+        <h4>Plano de Ação Direto ao Ponto</h4>
+        <p>Um roteiro claro pra você sair da leitura já sabendo exatamente o que fazer primeiro.</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://pay.herospark.com/segunda-oferta-523814" class="btn-cta" style="margin-top:48px;">🛒 Quero Começar a Organizar!</a>
+</section>
+
+<!-- AUTOR -->
+<section class="autor">
+  <div class="section-tag">👋 Quem é o Mestre Zeca?</div>
+  <div class="autor-card">
+    <div class="avatar">🧔</div>
+    <h3>Mestre Zeca</h3>
+    <div class="cargo">Especialista em Casa Arrumada do Jeito Certo</div>
+    <p>Sou o Mestre Zeca, e se tem uma coisa que me tira do sério é casa bagunçada! Mas calma, criatura — não precisa sair correndo. Minha missão é te mostrar que organizar e transformar o seu espaço pode ser <strong>simples, barato e até divertido</strong>.<br><br>
+    Com anos de experiência lidando com tralhas, gambiarras, tinta na parede e móveis tortos, aprendi que você não precisa de muito pra ter um lugar bonito e funcional. Só precisa de boa vontade, um empurrão na preguiça e dicas sinceras — que eu te dou sem frescura!</p>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depoimentos">
+  <div class="section-tag">⭐ O que estão dizendo</div>
+  <h2>Quem Já Leu, Aprovou!</h2>
+  <p>Veja o que as criaturas que já arrumaram a casa estão falando:</p>
+
+  <div class="dep-grid">
+    <div class="dep-card">
+      <div class="dep-estrelas">★★★★★</div>
+      <p>"Nunca pensei que organizar meu apartamento fosse tão simples! Já no primeiro dia coloquei o quarto em ordem. Mestre Zeca salva vidas (e casas)!"</p>
+      <div class="dep-autor">
+        <div class="dep-avatar">👩</div>
+        <div><div class="dep-nome">Fernanda R.</div><div class="dep-local">São Paulo, SP</div></div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-estrelas">★★★★★</div>
+      <p>"Cara, eu ria lendo e ia arrumando ao mesmo tempo! As dicas são práticas demais. Minha sala ficou outra depois de um fim de semana."</p>
+      <div class="dep-autor">
+        <div class="dep-avatar">👨</div>
+        <div><div class="dep-nome">Ricardo M.</div><div class="dep-local">Belo Horizonte, MG</div></div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-estrelas">★★★★★</div>
+      <p>"Comprei achando que seria mais do mesmo. Me surpreendi! Linguagem leve, dicas que realmente funcionam sem gastar nada. Recomendo demais."</p>
+      <div class="dep-autor">
+        <div class="dep-avatar">👩</div>
+        <div><div class="dep-nome">Camila S.</div><div class="dep-local">Curitiba, PR</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL / PREÇO -->
+<section class="cta-final">
+  <div class="section-tag">🚀 Garanta o seu agora</div>
+  <h2>Chega de Desculpa,<br>Criatura — Arruma Essa Casa!</h2>
+  <p>Por menos do que um almoço, você transforma o seu cantinho de vez. A decisão é agora!</p>
+
+  <div class="preco-box">
+    <div class="de">De R$ 97,00</div>
+    <span class="por">R$ 27,90</span>
+    <div class="parcelas">ou em 12x de R$ 2,99 no cartão</div>
+    <div class="economia">✅ Você economiza R$ 69,10 agora</div>
+  </div>
+
+  <br>
+  <a href="https://pay.herospark.com/segunda-oferta-523814" class="btn-cta" style="font-size:1.5rem; padding: 20px 56px;">🏠 Quero Arruma Essa Casa!</a>
+  <div class="seguranca" style="margin-top:18px;">🔒 Pagamento seguro &nbsp;•&nbsp; 📱 Acesso imediato &nbsp;•&nbsp; 💻 100% digital</div>
+
+  <div class="garantia">
+    <div class="g-icon">🛡️</div>
+    <div>
+      <h4>Satisfação Garantida</h4>
+      <p>Se você comprar e não gostar (o que a gente duvida!), fala com a gente. Sua satisfação é o que importa. Compra sem medo, criatura!</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2>Ficou com Dúvida? 🤔</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-pergunta">Como vou receber o ebook após a compra? <span class="faq-seta">▼</span></div>
+      <div class="faq-resposta">Assim que o pagamento for confirmado, você recebe acesso imediato pela plataforma HeroSpark. Você pode ler pelo celular, tablet ou computador — onde preferir!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-pergunta">O ebook é pra qualquer tipo de casa? <span class="faq-seta">▼</span></div>
+      <div class="faq-resposta">Sim! Seja um quarto de república, kitnet, apartamento ou casa grande — as dicas do Mestre Zeca se adaptam a qualquer espaço e orçamento.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-pergunta">Precisa gastar muito dinheiro pra colocar em prática? <span class="faq-seta">▼</span></div>
+      <div class="faq-resposta">Não! Esse é justamente o diferencial do Mestre Zeca. As dicas foram criadas pra você transformar sua casa usando o que já tem, sem precisar gastar quase nada.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-pergunta">O ebook fica disponível para sempre? <span class="faq-seta">▼</span></div>
+      <div class="faq-resposta">Sim! Após a compra, você tem acesso ilimitado ao conteúdo e pode acessar quando quiser, quantas vezes quiser.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-pergunta">E se eu não gostar do ebook? <span class="faq-seta">▼</span></div>
+      <div class="faq-resposta">Entre em contato com a gente que a gente resolve! Sua satisfação é prioridade. Compra sem medo, criatura — a gente não vai te deixar na mão.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Mestre Zeca — Todos os direitos reservados.</p>
+  <p style="margin-top:8px;">Dúvidas? Fale com a gente. &nbsp;|&nbsp; Plataforma: <a href="https://herospark.com" target="_blank">HeroSpark</a></p>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="float-cta" id="floatCta">
+  <a href="https://pay.herospark.com/segunda-oferta-523814">🏠 Quero o Ebook — R$ 27,90</a>
+</div>
+
+<script>
+  // TIMER — loop infinito com localStorage para persistência
+  const CHAVE = 'mz_timer';
+  const TEMPO_INICIAL = 2 * 3600 + 47 * 60;
+  let total;
+  try {
+    const saved = localStorage.getItem(CHAVE);
+    total = saved ? parseInt(saved) : TEMPO_INICIAL;
+    if (isNaN(total) || total <= 0) total = TEMPO_INICIAL;
+  } catch(e) { total = TEMPO_INICIAL; }
+
+  function tick() {
+    total--;
+    if (total < 0) total = TEMPO_INICIAL;
+    try { localStorage.setItem(CHAVE, total); } catch(e) {}
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    document.getElementById('horas').textContent = String(h).padStart(2,'0');
+    document.getElementById('minutos').textContent = String(m).padStart(2,'0');
+    document.getElementById('segundos').textContent = String(s).padStart(2,'0');
+  }
+  setInterval(tick, 1000);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-pergunta').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Floating CTA — throttled scroll
+  const floatCta = document.getElementById('floatCta');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        floatCta.style.display = window.scrollY > 500 ? 'block' : 'none';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>
